@@ -12,16 +12,28 @@ const App = () => {
   const [topArtists, setTopArtists] = useState([]);
 
   useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    const params = new URLSearchParams(hash);
-    const accessToken = params.get("access_token");
+    const handleCallback = () => {
+      const hash = window.location.hash.substring(1);
+      const params = new URLSearchParams(hash);
+      const accessToken = params.get("access_token");
 
-    if (accessToken) {
-      setToken(accessToken);
-      window.localStorage.setItem("accessToken", accessToken);
-      const expiresIn = parseInt(params.get("expires_in"));
-      const expiryTime = new Date().getTime() + expiresIn * 1000;
-      window.localStorage.setItem("tokenExpiry", expiryTime);
+      if (accessToken) {
+        setToken(accessToken);
+        window.localStorage.setItem("accessToken", accessToken);
+        const expiresIn = parseInt(params.get("expires_in"));
+        const expiryTime = new Date().getTime() + expiresIn * 1000;
+        window.localStorage.setItem("tokenExpiry", expiryTime);
+        // Redirect to remove access token from URL
+        window.location.href = "/";
+      } else {
+        console.error("Access token not found");
+        // Optionally, you can redirect the user to an error page or display an error message
+      }
+    };
+
+    // Check if the current route is the callback route
+    if (window.location.pathname === "/callback") {
+      handleCallback();
     } else {
       const storedToken = window.localStorage.getItem("accessToken");
       const expiryTime = parseInt(window.localStorage.getItem("tokenExpiry"));
