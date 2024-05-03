@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DisplayTopArtists from "./components/DisplayTopArtists";
 import "./App.css";
 
-const clientId = import.meta.env.CLIENT_ID;
+const CLIENT_ID = import.meta.env.CLIENT_ID;
 const redirectUri = "https://spotirank.netlify.app/callback";
 //const redirectUri = "http://localhost:5173/callback";
 
@@ -101,7 +101,7 @@ const App = () => {
   }, [token]);
 
   const handleLogin = () => {
-    const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=user-read-private%20user-read-email%20user-top-read`;
+    const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${redirectUri}&scope=user-read-private%20user-read-email%20user-top-read`;
     window.location.href = authUrl;
   };
 
@@ -116,7 +116,7 @@ const App = () => {
         body: new URLSearchParams({
           grant_type: "refresh_token",
           refresh_token: refreshToken,
-          client_id: clientId,
+          client_id: CLIENT_ID,
         }),
       });
 
