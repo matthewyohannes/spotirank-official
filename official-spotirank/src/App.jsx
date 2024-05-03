@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DisplayTopArtists from "./components/DisplayTopArtists";
 import "./App.css";
 
-const CLIENT_ID = import.meta.env.CLIENT_ID;
+const CLIENT_ID = "24b0c79e347c465fa026eab253ca42a5";
 const redirectUri = "https://spotirank.netlify.app/callback";
 //const redirectUri = "http://localhost:5173/callback";
 
