@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DisplayTopArtists from "./components/DisplayTopArtists";
 import "./App.css";
 
-const clientId = "24b0c79e347c465fa026eab253ca42a5";
+const clientId = import.meta.env.CLIENT_ID;
 const redirectUri = "http://localhost:5173/callback";
 
 const App = () => {
