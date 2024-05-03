@@ -42,7 +42,6 @@ const App = () => {
         if (response.ok) {
           const data = await response.json();
           setUserData(data);
-          console.log(data);
         } else if (response.status === 401) {
           console.error("Unauthorized");
           const refreshedToken = await refreshAccessToken();
