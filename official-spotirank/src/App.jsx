@@ -4,7 +4,7 @@ import "./App.css";
 
 const clientId = import.meta.env.CLIENT_ID;
 const redirectUri = "https://spotirank.netlify.app/callback";
-const redirectUri = "http://localhost:5173/callback";
+//const redirectUri = "http://localhost:5173/callback";
 
 const App = () => {
   const [token, setToken] = useState(null);
