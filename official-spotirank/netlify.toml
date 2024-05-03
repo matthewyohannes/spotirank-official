@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/callback/*"
+  to = "/"
+  status = 200
