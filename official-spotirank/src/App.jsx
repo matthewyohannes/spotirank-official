@@ -8,7 +8,7 @@ const redirectUri = "https://spotirank.netlify.app/callback";
 
 const App = () => {
   const [token, setToken] = useState(null);
-  const [userData, setUserData] = useState(null);
+  //const [userData, setUserData] = useState(null);
   const [topArtists, setTopArtists] = useState([]);
 
   useEffect(() => {
@@ -23,15 +23,12 @@ const App = () => {
         const expiresIn = parseInt(params.get("expires_in"));
         const expiryTime = new Date().getTime() + expiresIn * 1000;
         window.localStorage.setItem("tokenExpiry", expiryTime);
-        // Redirect to remove access token from URL
         window.location.href = "/";
       } else {
         console.error("Access token not found");
-        // Optionally, you can redirect the user to an error page or display an error message
       }
     };
 
-    // Check if the current route is the callback route
     if (window.location.pathname === "/callback") {
       handleCallback();
     } else {
@@ -44,35 +41,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("https://api.spotify.com/v1/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-        } else if (response.status === 401) {
-          console.error("Unauthorized");
-          const refreshedToken = await refreshAccessToken();
-          if (refreshedToken) {
-            setToken(refreshedToken);
-            fetchUserData();
-          } else {
-            console.error("Failed to refresh token");
-          }
-        } else {
-          console.error("Error fetching user data");
-          // Handle other errors
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
     const fetchTopArtists = async () => {
       try {
         const response = await fetch(
@@ -86,8 +54,8 @@ const App = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setTopArtists(data.items);
           console.log(data.items);
+          setTopArtists(data.items);
         } else if (response.status === 401) {
           console.error("Unauthorized");
           const refreshedToken = await refreshAccessToken();
@@ -99,7 +67,6 @@ const App = () => {
           }
         } else {
           console.error("Error fetching artist data");
-          // Handle other errors
         }
       } catch (error) {
         console.error("Error fetching artist data:", error);
@@ -107,7 +74,7 @@ const App = () => {
     };
 
     if (token) {
-      fetchUserData();
+      //fetchUserData();
       fetchTopArtists();
     }
   }, [token]);
@@ -163,7 +130,6 @@ const App = () => {
         ) : (
           topArtists && DisplayTopArtists(topArtists)
         )}
-        {/* {topArtists && <h1>{topArtists[0]}</h1>} */}
       </div>
     </div>
   );
