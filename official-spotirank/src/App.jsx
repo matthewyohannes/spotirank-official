@@ -66,7 +66,7 @@ const App = () => {
             console.error("Failed to refresh token");
           }
         } else {
-          console.error("Error fetching artist data");
+          console.error("Error fetching the artist data");
         }
       } catch (error) {
         console.error("Error fetching artist data:", error);
