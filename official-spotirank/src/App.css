@@ -74,6 +74,7 @@ ul {
 
 .login-button {
   background-color: rgb(30, 215, 96);
+  color: black;
   border-radius: 50px;
   font-size: 30px;
   font-family: Permanent Marker;
