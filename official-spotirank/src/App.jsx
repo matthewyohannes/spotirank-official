@@ -3,8 +3,8 @@ import DisplayTopArtists from "./components/DisplayTopArtists";
 import "./App.css";
 
 const CLIENT_ID = "24b0c79e347c465fa026eab253ca42a5";
-const redirectUri = "https://spotirank.netlify.app/callback";
-//const redirectUri = "http://localhost:5173/callback";
+//const redirectUri = "https://spotirank.netlify.app/callback";
+const redirectUri = "http://localhost:5173/callback";
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -123,8 +123,9 @@ const App = () => {
       <div>
         {!token ? (
           <div className="button-container">
+            <h1 className="welcome-line">Welcome to Spotirank!</h1>
             <button className="login-button" onClick={handleLogin}>
-              Login with Spotify
+              Login to your Spotify Here.
             </button>
           </div>
         ) : (

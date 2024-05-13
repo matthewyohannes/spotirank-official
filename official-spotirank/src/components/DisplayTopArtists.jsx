@@ -7,11 +7,9 @@ const DisplayTopArtists = (topArtists) => {
       <div className="artist-container">
         <article>
           <h1>
-            Welcome to Spotirank!
-            <br />
-            Here are your Top Artists
+            Here are your Top Artists!
           </h1>
-          <h5>This data is from the last 4 weeks!</h5>
+          <h5>This data is from the last 4 weeks.</h5>
         </article>
       </div>
       {topArtists.map((artist) => (

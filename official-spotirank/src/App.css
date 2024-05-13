@@ -58,9 +58,17 @@ ul {
 
 .button-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
+  flex-direction: column;
+  justify-content: column; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100vh; /* Set height to viewport height for vertical centering */
+}
+
+.welcome-line {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-button {
