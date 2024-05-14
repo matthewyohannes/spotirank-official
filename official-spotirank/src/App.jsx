@@ -38,6 +38,8 @@ const App = () => {
         setToken(storedToken);
       }
     }
+    console.log(token)
+    console.log(localStorage.accessToken)
   }, []);
 
   useEffect(() => {
